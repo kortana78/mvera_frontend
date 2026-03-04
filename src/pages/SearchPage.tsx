@@ -43,7 +43,7 @@ export function SearchPage() {
   return (
     <section className="space-y-5">
       <div>
-        <h1 className="text-3xl font-black text-slate-900 dark:text-white">Search Music</h1>
+        <h1 className="text-2xl font-black text-slate-900 dark:text-white sm:text-3xl">Search Music</h1>
         <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">Autocomplete songs, artists, and genres in one place.</p>
       </div>
 
@@ -61,19 +61,28 @@ export function SearchPage() {
       </div>
 
       <div className="flex flex-wrap items-center gap-2">
-        <button onClick={() => setTab("songs")} className={`rounded-md px-3 py-2 text-sm ${tab === "songs" ? "bg-brand-600 text-white" : "bg-slate-200 dark:bg-slate-700 dark:text-white"}`}>
+        <button
+          onClick={() => setTab("songs")}
+          className={`flex-1 rounded-md px-3 py-2 text-sm sm:flex-none ${tab === "songs" ? "bg-brand-600 text-white" : "bg-slate-200 dark:bg-slate-700 dark:text-white"}`}
+        >
           Songs
         </button>
-        <button onClick={() => setTab("artists")} className={`rounded-md px-3 py-2 text-sm ${tab === "artists" ? "bg-brand-600 text-white" : "bg-slate-200 dark:bg-slate-700 dark:text-white"}`}>
+        <button
+          onClick={() => setTab("artists")}
+          className={`flex-1 rounded-md px-3 py-2 text-sm sm:flex-none ${tab === "artists" ? "bg-brand-600 text-white" : "bg-slate-200 dark:bg-slate-700 dark:text-white"}`}
+        >
           Artists
         </button>
-        <button onClick={() => setTab("genres")} className={`rounded-md px-3 py-2 text-sm ${tab === "genres" ? "bg-brand-600 text-white" : "bg-slate-200 dark:bg-slate-700 dark:text-white"}`}>
+        <button
+          onClick={() => setTab("genres")}
+          className={`flex-1 rounded-md px-3 py-2 text-sm sm:flex-none ${tab === "genres" ? "bg-brand-600 text-white" : "bg-slate-200 dark:bg-slate-700 dark:text-white"}`}
+        >
           Genres
         </button>
         <select
           value={sortBy}
           onChange={(e) => setSortBy(e.target.value as "popularity" | "newest")}
-          className="ml-auto rounded-md border border-slate-300 bg-white px-3 py-2 text-sm dark:border-slate-600 dark:bg-slate-800 dark:text-white"
+          className="w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm dark:border-slate-600 dark:bg-slate-800 dark:text-white sm:ml-auto sm:w-auto"
         >
           <option value="popularity">Popularity</option>
           <option value="newest">Newest</option>

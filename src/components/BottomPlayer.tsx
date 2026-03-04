@@ -26,18 +26,18 @@ export function BottomPlayer() {
 
   if (!currentSong) {
     return (
-      <div className="fixed bottom-0 left-0 right-0 border-t border-slate-800 bg-black/95 px-4 py-3 backdrop-blur">
-        <p className="mx-auto max-w-6xl text-sm text-slate-400">No track selected. Play a song to start.</p>
+      <div className="fixed bottom-0 left-0 right-0 border-t border-orange-200 bg-white/95 px-4 py-3 backdrop-blur">
+        <p className="mx-auto max-w-6xl text-center text-sm text-slate-600 sm:text-left">No track selected. Play a song to start.</p>
       </div>
     );
   }
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 border-t border-slate-800 bg-black/95 px-4 py-3 backdrop-blur">
-      <div className="mx-auto flex max-w-6xl items-center gap-4">
+    <div className="fixed bottom-0 left-0 right-0 border-t border-orange-200 bg-white/95 px-4 py-3 backdrop-blur">
+      <div className="mx-auto flex max-w-6xl flex-col gap-3 md:flex-row md:items-center">
         <div className="min-w-0 flex-1">
-          <p className="truncate text-sm font-semibold text-white">{currentSong.title}</p>
-          <p className="truncate text-xs text-slate-400">{currentSong.artistName}</p>
+          <p className="truncate text-sm font-semibold text-slate-900">{currentSong.title}</p>
+          <p className="truncate text-xs text-slate-500">{currentSong.artistName}</p>
           <input
             type="range"
             min={0}
@@ -54,35 +54,36 @@ export function BottomPlayer() {
           />
         </div>
 
-        <div className="flex items-center gap-2">
-          <button onClick={prev} className="rounded-md bg-slate-800 px-3 py-2 text-xs font-semibold text-white">
+        <div className="flex flex-wrap items-center gap-2">
+          <button onClick={prev} className="rounded-md bg-orange-100 px-3 py-2 text-xs font-semibold text-slate-900">
             <span className="inline-flex items-center gap-1">
               <PrevIcon />
-              Prev
+              <span className="hidden sm:inline">Prev</span>
             </span>
           </button>
           <button onClick={playPause} className="rounded-md bg-brand-500 px-3 py-2 text-xs font-semibold text-black">
             <span className="inline-flex items-center gap-1">
               {isPlaying ? <PauseIcon /> : <PlayIcon />}
-              {isPlaying ? "Pause" : "Play"}
+              <span className="hidden sm:inline">{isPlaying ? "Pause" : "Play"}</span>
             </span>
           </button>
-          <button onClick={next} className="rounded-md bg-slate-800 px-3 py-2 text-xs font-semibold text-white">
+          <button onClick={next} className="rounded-md bg-orange-100 px-3 py-2 text-xs font-semibold text-slate-900">
             <span className="inline-flex items-center gap-1">
               <NextIcon />
-              Next
+              <span className="hidden sm:inline">Next</span>
             </span>
           </button>
-          <button onClick={() => setShowQueue((prev) => !prev)} className="rounded-md bg-slate-800 px-3 py-2 text-xs font-semibold text-white">
+          <button onClick={() => setShowQueue((prev) => !prev)} className="rounded-md bg-orange-100 px-3 py-2 text-xs font-semibold text-slate-900">
             <span className="inline-flex items-center gap-1">
               <QueueIcon />
-              Queue ({queue.length})
+              <span className="hidden sm:inline">Queue ({queue.length})</span>
+              <span className="sm:hidden">{queue.length}</span>
             </span>
           </button>
         </div>
 
-        <div className="flex w-32 items-center gap-2">
-          <span className="text-xs text-slate-400">Vol</span>
+        <div className="flex w-full items-center gap-2 md:w-32">
+          <span className="text-xs text-slate-600">Vol</span>
           <input type="range" min={0} max={1} step={0.01} value={volume} onChange={(e) => setVolume(Number(e.target.value))} className="w-full" />
         </div>
       </div>
@@ -95,14 +96,14 @@ export function BottomPlayer() {
         onEnded={onTrackEnded}
       />
       {showQueue ? (
-        <div className="mx-auto mt-3 max-w-6xl rounded-lg border border-slate-800 bg-slate-950 p-2">
+        <div className="mx-auto mt-3 max-w-6xl rounded-lg border border-orange-200 bg-orange-50 p-2">
           <div className="max-h-36 overflow-auto">
             {queue.map((song) => (
               <button
                 key={song.id}
                 onClick={() => playNow(song)}
                 className={`mb-1 flex w-full items-center justify-between rounded px-2 py-1 text-left text-xs ${
-                  currentSong.id === song.id ? "bg-brand-500/20 text-brand-200" : "bg-slate-900 text-slate-200"
+                  currentSong.id === song.id ? "bg-brand-100 text-brand-800" : "bg-white text-slate-700"
                 }`}
               >
                 <span className="truncate pr-2">{song.title}</span>

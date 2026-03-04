@@ -34,8 +34,8 @@ export function HomePage() {
 
   return (
     <section className="space-y-6">
-      <div className="rounded-3xl bg-gradient-to-r from-emerald-600 via-brand-500 to-green-400 p-8 text-black shadow-lg">
-        <h1 className="text-3xl font-black">Stream Malawi and Global Sounds</h1>
+      <div className="rounded-3xl bg-gradient-to-r from-orange-600 via-brand-500 to-amber-400 p-6 text-black shadow-lg sm:p-8">
+        <h1 className="text-2xl font-black sm:text-3xl">Stream Malawi and Global Sounds</h1>
         <p className="mt-2 text-sm text-black/80">Discover music, play instantly, and build your own flow.</p>
       </div>
       <SearchBar onChange={setSearch} />

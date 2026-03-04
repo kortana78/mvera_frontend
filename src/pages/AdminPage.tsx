@@ -137,7 +137,7 @@ export function AdminPage() {
   return (
     <section className="space-y-8">
       <div>
-        <h1 className="text-3xl font-black text-slate-900 dark:text-white">Admin Panel</h1>
+        <h1 className="text-2xl font-black text-slate-900 dark:text-white sm:text-3xl">Admin Panel</h1>
         <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">
           Manage users, songs, artists, and genres from one dashboard.
         </p>
@@ -247,7 +247,7 @@ export function AdminPage() {
       <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-900">
         <h2 className="text-xl font-bold text-slate-900 dark:text-white">Manage Users</h2>
         <div className="mt-4 overflow-x-auto">
-          <table className="min-w-full text-sm">
+          <table className="min-w-[640px] text-sm">
             <thead>
               <tr className="border-b text-left text-slate-600 dark:text-slate-300">
                 <th className="py-2">Name</th>
@@ -265,7 +265,7 @@ export function AdminPage() {
                   <td className="py-2 capitalize">{u.role}</td>
                   <td className="py-2">{u.banned ? "Banned" : "Active"}</td>
                   <td className="py-2">
-                    <div className="flex gap-2">
+                    <div className="flex flex-wrap gap-2">
                       <button onClick={() => (u.banned ? unbanUser(u.id) : banUser(u.id)).then(loadAll)} className="rounded bg-slate-900 px-2 py-1 text-xs text-white">
                         {u.banned ? "Unban" : "Ban"}
                       </button>
@@ -286,7 +286,7 @@ export function AdminPage() {
           <h2 className="text-xl font-bold text-slate-900 dark:text-white">Manage Songs</h2>
           <ul className="mt-3 space-y-2">
             {songs.map((song) => (
-              <li key={song.id} className="flex items-center justify-between rounded-lg bg-slate-50 px-3 py-2 text-sm dark:bg-slate-800">
+              <li key={song.id} className="flex flex-wrap items-center justify-between gap-2 rounded-lg bg-slate-50 px-3 py-2 text-sm dark:bg-slate-800">
                 <span className="truncate">{song.title}</span>
                 <button onClick={() => deleteSong(song.id).then(loadAll)} className="rounded bg-red-600 px-2 py-1 text-xs text-white">
                   Delete
@@ -301,8 +301,8 @@ export function AdminPage() {
           <p className="mt-2 text-sm font-semibold text-slate-700 dark:text-slate-200">Artists</p>
           <ul className="mt-2 space-y-2">
             {artists.map((artist) => (
-              <li key={artist.id} className="flex items-center justify-between rounded-lg bg-slate-50 px-3 py-2 text-sm dark:bg-slate-800">
-                <span>{artist.name}</span>
+              <li key={artist.id} className="flex flex-wrap items-center justify-between gap-2 rounded-lg bg-slate-50 px-3 py-2 text-sm dark:bg-slate-800">
+                <span className="break-words">{artist.name}</span>
                 <button onClick={() => deleteArtist(artist.id).then(loadAll)} className="rounded bg-red-600 px-2 py-1 text-xs text-white">
                   Delete
                 </button>
@@ -312,8 +312,8 @@ export function AdminPage() {
           <p className="mt-4 text-sm font-semibold text-slate-700 dark:text-slate-200">Genres</p>
           <ul className="mt-2 space-y-2">
             {genres.map((genre) => (
-              <li key={genre.id} className="flex items-center justify-between rounded-lg bg-slate-50 px-3 py-2 text-sm dark:bg-slate-800">
-                <span>{genre.name}</span>
+              <li key={genre.id} className="flex flex-wrap items-center justify-between gap-2 rounded-lg bg-slate-50 px-3 py-2 text-sm dark:bg-slate-800">
+                <span className="break-words">{genre.name}</span>
                 <button onClick={() => deleteGenre(genre.id).then(loadAll)} className="rounded bg-red-600 px-2 py-1 text-xs text-white">
                   Delete
                 </button>

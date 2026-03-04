@@ -15,12 +15,12 @@ export function GenresPage() {
 
   return (
     <section className="space-y-4">
-      <div className="flex items-center justify-between">
-        <h1 className="text-3xl font-black text-slate-900 dark:text-white">Explore Genres</h1>
+      <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+        <h1 className="text-2xl font-black text-slate-900 dark:text-white sm:text-3xl">Explore Genres</h1>
         <select
           value={sortBy}
           onChange={(e) => setSortBy(e.target.value as "name" | "songs")}
-          className="rounded-md border border-slate-300 bg-white px-3 py-2 text-sm dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+          className="w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm dark:border-slate-700 dark:bg-slate-900 dark:text-white sm:w-auto"
         >
           <option value="songs">Most Songs</option>
           <option value="name">A-Z</option>

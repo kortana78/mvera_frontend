@@ -25,7 +25,7 @@ export function ProfilePage() {
   return (
     <section className="space-y-6">
       <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-700 dark:bg-slate-900">
-        <h1 className="text-3xl font-black text-slate-900 dark:text-white">{user.name}</h1>
+        <h1 className="text-2xl font-black text-slate-900 dark:text-white sm:text-3xl">{user.name}</h1>
         <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">{user.email}</p>
         <p className="mt-2 inline-block rounded-full bg-brand-100 px-3 py-1 text-xs font-semibold text-brand-800 dark:bg-brand-900/40 dark:text-brand-200">
           {user.role}

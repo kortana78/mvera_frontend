@@ -75,14 +75,14 @@ export function SongCard({ song, queue }: SongCardProps) {
   }
 
   return (
-    <article className="rounded-2xl border border-slate-800 bg-slate-950 p-5 shadow-sm">
+    <article className="rounded-2xl border border-orange-200 bg-white p-5 shadow-sm">
       {song.coverImage ? <img src={song.coverImage} alt={song.title} className="mb-3 h-40 w-full rounded-xl object-cover" /> : null}
-      <h3 className="text-lg font-bold text-white">{song.title}</h3>
-      <p className="text-sm text-slate-300">{song.artistName}</p>
-      <p className="text-sm text-slate-400">{song.genreName}</p>
+      <h3 className="text-lg font-bold text-slate-900">{song.title}</h3>
+      <p className="text-sm text-slate-700">{song.artistName}</p>
+      <p className="text-sm text-slate-500">{song.genreName}</p>
       <p className="mt-2 text-sm font-medium text-brand-700">{song.views.toLocaleString()} views</p>
-      <p className="text-sm text-slate-300">{likesCount.toLocaleString()} likes</p>
-      <p className="text-sm text-slate-300">Rating: {averageRating ? averageRating.toFixed(1) : "N/A"} / 5</p>
+      <p className="text-sm text-slate-700">{likesCount.toLocaleString()} likes</p>
+      <p className="text-sm text-slate-700">Rating: {averageRating ? averageRating.toFixed(1) : "N/A"} / 5</p>
       <div className="mt-4 flex flex-wrap items-center gap-2">
         <button onClick={() => playNow(song, queue)} className="rounded-lg bg-brand-500 px-3 py-2 text-xs font-semibold text-black">
           <span className="inline-flex items-center gap-1">
@@ -90,7 +90,7 @@ export function SongCard({ song, queue }: SongCardProps) {
             Play
           </span>
         </button>
-        <button onClick={() => addToQueue(song)} className="rounded-lg bg-slate-800 px-3 py-2 text-xs font-semibold text-white">
+        <button onClick={() => addToQueue(song)} className="rounded-lg bg-orange-100 px-3 py-2 text-xs font-semibold text-slate-900">
           <span className="inline-flex items-center gap-1">
             <QueueIcon />
             Queue
@@ -98,7 +98,7 @@ export function SongCard({ song, queue }: SongCardProps) {
         </button>
         <a
           href={`http://localhost:8000/api/music/${song.id}/download`}
-          className="rounded-lg bg-slate-800 px-3 py-2 text-xs font-semibold text-white"
+          className="rounded-lg bg-orange-100 px-3 py-2 text-xs font-semibold text-slate-900"
         >
           Download
         </a>
@@ -112,7 +112,7 @@ export function SongCard({ song, queue }: SongCardProps) {
             {liked ? "Unlike" : "Like"}
           </span>
         </button>
-        <button onClick={onToggleComments} className="rounded-lg bg-slate-800 px-3 py-2 text-xs font-semibold text-white">
+        <button onClick={onToggleComments} className="rounded-lg bg-orange-100 px-3 py-2 text-xs font-semibold text-slate-900">
           <span className="inline-flex items-center gap-1">
             <CommentIcon />
             Comments
@@ -124,7 +124,7 @@ export function SongCard({ song, queue }: SongCardProps) {
           <button
             key={v}
             onClick={() => onRate(v)}
-            className={`rounded px-2 py-1 text-xs font-semibold ${rating >= v ? "bg-amber-400 text-slate-900" : "bg-slate-200 text-slate-600 dark:bg-slate-700 dark:text-slate-200"}`}
+            className={`rounded px-2 py-1 text-xs font-semibold ${rating >= v ? "bg-amber-400 text-slate-900" : "bg-slate-200 text-slate-600"}`}
           >
             {v}
           </button>
@@ -132,7 +132,7 @@ export function SongCard({ song, queue }: SongCardProps) {
       </div>
       {showComments ? (
         <div className="mt-4 space-y-3">
-          <form onSubmit={onAddComment} className="flex gap-2">
+          <form onSubmit={onAddComment} className="flex flex-col gap-2 sm:flex-row">
             <input
               value={commentText}
               onChange={(e) => setCommentText(e.target.value)}
@@ -143,7 +143,7 @@ export function SongCard({ song, queue }: SongCardProps) {
             <button
               type="submit"
               disabled={!user || !commentText.trim()}
-              className="rounded-lg bg-slate-900 px-3 py-2 text-xs font-semibold text-white disabled:bg-slate-300"
+              className="rounded-lg bg-brand-500 px-3 py-2 text-xs font-semibold text-black disabled:bg-slate-300"
             >
               Post
             </button>
